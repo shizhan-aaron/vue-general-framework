@@ -59,8 +59,8 @@ import { useStore } from 'vuex'
 
 // 数据源
 const loginForm = ref({
-  username: '',
-  password: ''
+  username: 'super-admin',
+  password: '123456'
 })
 
 // 验证规则
@@ -101,11 +101,11 @@ const handlerLogin = () => {
     if (!valid) return
     // 2.触发登录动作
     loading.value = true
-    console.log(loginFromRef.value)
     store
       .dispatch('user/login', loginForm.value)
       .then(() => {
         loading.value = false
+        store.dispatch('user/getUserInfo')
       })
       .catch((err) => {
         console.log(err)
