@@ -41,7 +41,11 @@
         </span>
       </el-form-item>
 
-      <el-button type="primary" style="width: 100%; margin-bottom: 30px"
+      <el-button
+        type="primary"
+        style="width: 100%; margin-bottom: 30px"
+        :loading="loading"
+        @click="handlerLogin"
         >登录</el-button
       >
     </el-form>
@@ -51,6 +55,7 @@
 <script setup>
 import { ref } from 'vue'
 import { validatePassword } from './rules'
+import { useStore } from 'vuex'
 
 // 数据源
 const loginForm = ref({
@@ -84,6 +89,21 @@ const onChangePwdType = () => {
   } else {
     passwordType.value = 'password'
   }
+}
+
+// 处理登录
+const loading = ref(false)
+const loginFromRef = ref(null)
+const store = useStore()
+const handlerLogin = () => {
+  // 1.进行表单校验
+  loginFromRef.value.validator((valid) => {
+    if (!valid) return
+    // 2.触发登录动作
+    loading.value = true
+    store.dispatch('user/login', loginForm.value)
+  })
+  // 3.进行登录后处理
 }
 </script>
 
