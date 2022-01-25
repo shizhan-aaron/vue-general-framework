@@ -1,3 +1,4 @@
+import { login } from '@/api/sys'
 import md5 from 'md5'
 
 export default {
@@ -11,7 +12,7 @@ export default {
     login (context, userInfo) {
       const { username, password } = userInfo
       return new Promise((resolve, reject) => {
-        this.login({
+        login({
           username,
           password: md5(password)
         }).then(data => {

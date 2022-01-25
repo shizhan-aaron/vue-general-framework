@@ -97,11 +97,20 @@ const loginFromRef = ref(null)
 const store = useStore()
 const handlerLogin = () => {
   // 1.进行表单校验
-  loginFromRef.value.validator((valid) => {
+  loginFromRef.value.validate((valid) => {
     if (!valid) return
     // 2.触发登录动作
     loading.value = true
-    store.dispatch('user/login', loginForm.value)
+    console.log(loginFromRef.value)
+    store
+      .dispatch('user/login', loginForm.value)
+      .then(() => {
+        loading.value = false
+      })
+      .catch((err) => {
+        console.log(err)
+        loading.value = false
+      })
   })
   // 3.进行登录后处理
 }
