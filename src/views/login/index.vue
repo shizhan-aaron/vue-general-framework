@@ -105,7 +105,6 @@ const handlerLogin = () => {
       .dispatch('user/login', loginForm.value)
       .then(() => {
         loading.value = false
-        store.dispatch('user/getUserInfo')
       })
       .catch((err) => {
         console.log(err)

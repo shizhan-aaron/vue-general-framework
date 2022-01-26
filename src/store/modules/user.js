@@ -1,6 +1,7 @@
 import { login, getUserInfo } from '@/api/sys'
 import md5 from 'md5'
 import { setItem, getItem, clearItem } from '@/utils/storage'
+import { setTimeStamp } from '@/utils/auth'
 import { TOKEN } from '@/constant'
 import router from '@/router'
 
@@ -31,7 +32,10 @@ export default {
           password: md5(password)
         }).then(data => {
           this.commit('user/setToken', data.token)
+          // 跳转主页
           router.push('/')
+          // 保存登录时间
+          setTimeStamp()
           resolve()
         }).catch(err => {
           reject(err)
