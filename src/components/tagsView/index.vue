@@ -19,12 +19,17 @@
         @click.prevent.stop="onCloseClick(index)"
       />
     </router-link>
-    <context-menu v-show="visible"></context-menu>
+    <context-menu
+      v-show="visible"
+      :style="menuStyle"
+      :index="selectIndex"
+    ></context-menu>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, watch } from 'vue'
+import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 import contextMenu from './contextMenu.vue'
 
@@ -39,7 +44,13 @@ const isActive = (tag) => {
 /**
  * 关闭 tag 的点击事件
  */
-const onCloseClick = (index) => {}
+const store = useStore()
+const onCloseClick = (index) => {
+  store.commit('app/removeTagsView', {
+    type: 'index',
+    index
+  })
+}
 
 /**
  * 鼠标右键
@@ -61,6 +72,23 @@ const openMenu = (e, index) => {
   selectIndex.value = index
   visible.value = true
 }
+/**
+ * 关闭 menu
+ */
+const closeMenu = () => {
+  visible.value = false
+}
+
+/**
+ * 监听变化
+ */
+watch(visible, (val) => {
+  if (val) {
+    document.body.addEventListener('click', closeMenu)
+  } else {
+    document.body.removeEventListener('click', closeMenu)
+  }
+})
 </script>
 
 <style lang="scss" scoped>

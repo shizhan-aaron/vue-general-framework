@@ -19,7 +19,7 @@ const privateRoutes = [
       {
         path: '/user/manage',
         name: 'userManage',
-        component: () => import('@/views/profile/index'),
+        component: () => import('@/views/user-manage/index'),
         meta: {
           title: '用户管理',
           icon: 'personnel-manage'

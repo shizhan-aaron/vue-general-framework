@@ -7,17 +7,28 @@
 
 <script setup>
 import { defineProps } from 'vue'
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 
-defineProps({
+const props = defineProps({
   index: {
     type: Number,
     required: true
   }
 })
 
-const onRefreshClick = () => {}
+const router = useRouter()
+const onRefreshClick = () => {
+  router.go(0)
+}
 
-const onCloseOtherClick = () => {}
+const store = useStore()
+const onCloseOtherClick = () => {
+  store.commit('app/removeTagsView', {
+    type: 'other',
+    index: props.index
+  })
+}
 </script>
 
 <style lang="scss" scoped>
