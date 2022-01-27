@@ -6,9 +6,9 @@
         shape="square"
         src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png"
       />
-      <h1 class="logo-title" v-if="$store.getters.sidebarOpened">
+      <div class="logo-title" v-if="$store.getters.sidebarOpened">
         imooc-admin
-      </h1>
+      </div>
     </div>
     <el-scrollbar>
       <sidebar-menu></sidebar-menu>
@@ -25,7 +25,7 @@ const logoHeight = 44
 <style lang="scss" scoped>
 .logo-container {
   height: v-bind(logoHeight) + 'px';
-  padding: 10px 0 22px 0;
+  padding: 22px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,9 +34,13 @@ const logoHeight = 44
     margin-left: 10px;
     color: #fff;
     font-weight: 600;
-    line-height: 50px;
+    line-height: 44px;
     font-size: 16px;
     white-space: nowrap;
+  }
+
+  .el-avatar {
+    --el-avatar-background-color: none;
   }
 }
 </style>

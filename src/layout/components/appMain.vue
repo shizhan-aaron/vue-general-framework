@@ -5,17 +5,58 @@
 </template>
 
 <script setup>
-import {} from 'vue'
+import { watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { isTags } from '@/utils/tags'
+import { useStore } from 'vuex'
+
+/**
+ * 生成title
+ */
+const getTitle = (route) => {
+  let title = ''
+  if (!route.meta) {
+    const pathArr = route.path.split('/')
+    title = pathArr[pathArr.length - 1]
+  } else {
+    title = route.meta.title
+  }
+
+  return title
+}
+
+const route = useRoute()
+const store = useStore()
+watch(
+  route,
+  (to, from) => {
+    // 并不是所有的路由都需要被保存
+    if (!isTags(to.path)) return
+    const { fullPath, meta, name, params, path, query } = to
+    store.commit('app/addTagsViewList', {
+      fullPath,
+      meta,
+      name,
+      params,
+      path,
+      query,
+      title: getTitle(to)
+    })
+  },
+  {
+    immediate: true
+  }
+)
 </script>
 
 <style lang="scss" scoped>
 .app-main {
   // 浏览器可视区域的高度 100vh
-  min-height: calc(100vh - 50px);
+  min-height: 100vh;
   width: 100%;
   position: relative;
   overflow: hidden;
-  padding: 61px 20px 20px 20px;
+  padding: 111px 20px 20px 20px;
   box-sizing: border-box;
 }
 </style>

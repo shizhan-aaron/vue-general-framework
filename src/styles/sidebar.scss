@@ -7,6 +7,7 @@
   }
 
   .sidebar-container {
+    box-shadow: 2px 0 6px rgb(0 21 41 / 35%);
     transition: width #{$sideBarDuration};
     width: $sideBarWidth !important;
     height: 100%;
