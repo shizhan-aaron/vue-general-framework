@@ -56,13 +56,16 @@ watch(
 </script>
 
 <style lang="scss" scoped>
+// @import '~@/styles/variables.scss';
+
 .app-main {
   // 浏览器可视区域的高度 100vh
+  background-color: $color--bg;
   min-height: 100vh;
   width: 100%;
   position: relative;
   overflow: hidden;
-  padding: 111px 20px 20px 20px;
+  padding: 120px 20px 20px 20px;
   box-sizing: border-box;
 }
 </style>

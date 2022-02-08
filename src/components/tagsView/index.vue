@@ -96,11 +96,10 @@ watch(visible, (val) => {
 
 <style lang="scss" scoped>
 .tags-view-container {
-  height: 45px;
-  line-height: 45px;
+  height: 50px;
+  line-height: 50px;
   width: 100%;
   background: #fff;
-  border-bottom: 1px solid #d8dce5;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
   .tags-view-item {
     border-radius: 4px;
