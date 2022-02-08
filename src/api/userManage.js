@@ -11,6 +11,15 @@ export const userManageList = data => {
 }
 
 /**
+ * 获取用户详情
+ */
+export const userDetail = id => {
+  return request({
+    url: `/user-manage/detail/${id}`
+  })
+}
+
+/**
  * 获取指定用户角色
  */
 export const userRole = uid => {

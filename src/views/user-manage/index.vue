@@ -39,7 +39,9 @@
         </el-table-column>
         <el-table-column label="操作" fixed="right" width="260">
           <template #default="{ row }">
-            <el-button type="primary" size="mini">查看</el-button>
+            <el-button type="primary" size="mini" @click="onShowClick(row._id)"
+              >查看</el-button
+            >
             <el-button type="info" size="mini" @click="onShowRoleClick(row)"
               >角色</el-button
             >
@@ -72,6 +74,7 @@
 import { ref, watch } from 'vue'
 import { userManageList } from '@/api/userManage'
 import rolesDialog from './components/role.vue'
+import { useRouter } from 'vue-router'
 
 // 数据相关
 const tableData = ref([])
@@ -104,6 +107,14 @@ const handleSizeChange = (currentSize) => {
 const handleCurrentChange = (currentPage) => {
   page.value = currentPage
   getListData()
+}
+
+/**
+ * 查看用户详情
+ */
+const router = useRouter()
+const onShowClick = (id) => {
+  router.push(`/user/info/${id}`)
 }
 
 /**

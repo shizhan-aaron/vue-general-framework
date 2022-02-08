@@ -6,8 +6,6 @@
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
-      <!-- 主体变更 -->
-      <theme-picker class="right-menu-item hover-effect"></theme-picker>
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -41,7 +39,6 @@ import {} from 'vue'
 import { useStore } from 'vuex'
 import hamburger from '@/components/hamburger/index'
 import breadcrumb from '@/components/breadcrumb/index'
-import themePicker from '@/components/themePicker/index'
 
 const store = useStore()
 const logout = () => {

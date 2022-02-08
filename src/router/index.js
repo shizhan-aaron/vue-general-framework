@@ -48,10 +48,14 @@ const privateRoutes = [
       {
         path: '/user/info/:id',
         name: 'userInfo',
+        beforeEnter: (to, from, next) => {
+          if (to.params.id) {
+            to.meta.title = to.params.id + ' 员工信息'
+          }
+          next()
+        },
         component: () => import('@/views/user-info/index'),
-        meta: {
-          title: '用户信息'
-        }
+        props: true
       },
       {
         path: '/user/import',

@@ -13,7 +13,11 @@
       @contextmenu.prevent="openMenu($event, index)"
     >
       {{ tag.title }}
-      <i class="el-icon-close" @click.prevent.stop="onCloseClick(index)" />
+      <i
+        v-if="tag.name !== 'profile'"
+        class="el-icon-close"
+        @click.prevent.stop="onCloseClick(index, isActive(tag))"
+      />
     </router-link>
     <context-menu
       v-show="visible"
@@ -41,10 +45,11 @@ const isActive = (tag) => {
  * 关闭 tag 的点击事件
  */
 const store = useStore()
-const onCloseClick = (index) => {
+const onCloseClick = (index, isActive) => {
   store.commit('app/removeTagsView', {
     type: 'index',
-    index
+    index,
+    isActive
   })
 }
 
@@ -107,11 +112,12 @@ watch(visible, (val) => {
     border: 1px solid #d8dce5;
     color: #495060;
     background: #fff;
-    padding: 0 4px 0 12px;
+    padding: 0 6px 0 12px;
     font-size: 12px;
     margin-right: 9px;
     &:first-of-type {
       margin-left: 15px;
+      padding-right: 14px;
     }
     &:last-of-type {
       margin-right: 15px;
