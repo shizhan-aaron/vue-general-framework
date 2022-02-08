@@ -13,11 +13,7 @@
       @contextmenu.prevent="openMenu($event, index)"
     >
       {{ tag.title }}
-      <i
-        v-show="!isActive(tag)"
-        class="el-icon-close"
-        @click.prevent.stop="onCloseClick(index)"
-      />
+      <i class="el-icon-close" @click.prevent.stop="onCloseClick(index)" />
     </router-link>
     <context-menu
       v-show="visible"
@@ -62,6 +58,7 @@ const menuStyle = reactive({
   left: 0,
   top: 0
 })
+
 /**
  * 展示 menu
  */
@@ -72,6 +69,7 @@ const openMenu = (e, index) => {
   selectIndex.value = index
   visible.value = true
 }
+
 /**
  * 关闭 menu
  */
@@ -93,8 +91,8 @@ watch(visible, (val) => {
 
 <style lang="scss" scoped>
 .tags-view-container {
-  height: 40px;
-  line-height: 40px;
+  height: 45px;
+  line-height: 45px;
   width: 100%;
   background: #fff;
   border-bottom: 1px solid #d8dce5;
@@ -120,7 +118,6 @@ watch(visible, (val) => {
     }
     &.active {
       color: #fff;
-      padding-right: 12px;
       &::before {
         content: '';
         background: #fff;
