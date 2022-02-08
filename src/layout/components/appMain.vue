@@ -56,7 +56,7 @@ watch(
 </script>
 
 <style lang="scss" scoped>
-// @import '~@/styles/variables.scss';
+@import '~@/styles/variables.scss';
 
 .app-main {
   // 浏览器可视区域的高度 100vh

@@ -24,6 +24,7 @@ getRoleList()
 
 <style lang="scss" scoped>
 @import '~@/styles/mixin.scss';
+
 .container {
   @include app-main-wrapper;
 }
