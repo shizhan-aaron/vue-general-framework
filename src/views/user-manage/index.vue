@@ -2,7 +2,9 @@
   <div class="user-manage-container">
     <el-card class="header">
       <div>
-        <el-button type="primary"> excel 导入</el-button>
+        <el-button type="primary" v-permission="['importUser']">
+          excel 导入</el-button
+        >
         <el-button type="success"> excel 导出 </el-button>
       </div>
     </el-card>
@@ -42,10 +44,16 @@
             <el-button type="primary" size="mini" @click="onShowClick(row._id)"
               >查看</el-button
             >
-            <el-button type="info" size="mini" @click="onShowRoleClick(row)"
+            <el-button
+              type="info"
+              size="mini"
+              @click="onShowRoleClick(row)"
+              v-permission="['distributeRole']"
               >角色</el-button
             >
-            <el-button type="danger" size="mini">删除</el-button>
+            <el-button type="danger" size="mini" v-permission="['removeUser']"
+              >删除</el-button
+            >
           </template>
         </el-table-column>
       </el-table>

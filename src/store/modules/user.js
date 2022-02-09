@@ -3,7 +3,7 @@ import md5 from 'md5'
 import { setItem, getItem, clearItem } from '@/utils/storage'
 import { setTimeStamp } from '@/utils/auth'
 import { TOKEN } from '@/constant'
-import router from '@/router'
+import router, { resetRouter } from '@/router'
 
 export default {
   namespaced: true,
@@ -54,11 +54,14 @@ export default {
      * 退出登陆
      */
     logout () {
+      // 初始化路由表
+      resetRouter()
+
       // 清理掉当前用户缓存
       this.commit('user/setToken', '')
-      this.commit('user/setUserInfo', '')
+      this.commit('user/setUserInfo', {})
+      this.commit('app/initTagsViewList')
       clearItem()
-      // TODO：清理掉权限相关配置
 
       // 返回到登陆也
       router.push('/login')

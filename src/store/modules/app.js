@@ -12,6 +12,14 @@ export default {
     triggerSidebarOpened (state) {
       state.sidebarOpened = !state.sidebarOpened
     },
+
+    /**
+     * 初始化 tagsList
+     */
+    initTagsViewList(state) {
+      state.tagsViewList = []
+    },
+
     /**
      * 添加tags
      */
@@ -25,6 +33,7 @@ export default {
         setItem(TAGS_VIEW, state.tagsViewList)
       }
     },
+
     /**
      * 为指定的tag修改title
      */
@@ -32,6 +41,7 @@ export default {
       state.tagsViewList[index] = tag
       setItem(TAGS_VIEW, state.tagsViewList)
     },
+
     /**
      * 移除tag
      * @param { other || right || index } payload

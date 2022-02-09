@@ -11,11 +11,13 @@ import installIcons from '@/icons'
 import './permission'
 // filter
 import installFilter from '@/filters'
+import installDirective from '@/directives'
 
 const app = createApp(App)
 installElementPlus(app)
 installIcons(app)
 installFilter(app)
+installDirective(app)
 
 app
   .use(store)
