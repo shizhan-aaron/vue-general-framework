@@ -10,15 +10,15 @@
         <h3 class="title">用户登录</h3>
       </div>
 
-      <el-form-item prop="username">
+      <el-form-item prop="account">
         <span class="svg-container">
           <svg-icon icon="user"></svg-icon>
         </span>
         <el-input
-          placeholder="username"
-          name="username"
+          placeholder="account"
+          name="account"
           type="text"
-          v-model="loginForm.username"
+          v-model="loginForm.account"
         />
       </el-form-item>
 
@@ -59,13 +59,13 @@ import { useStore } from 'vuex'
 
 // 数据源
 const loginForm = ref({
-  username: 'super-admin',
+  account: '111@qq.com',
   password: '123456'
 })
 
 // 验证规则
 const loginRules = ref({
-  username: [
+  account: [
     {
       required: true,
       trigger: 'blur',

@@ -6,7 +6,7 @@ import request from '@/utils/request'
  */
 export const login = data => {
   return request({
-    url: '/sys/login',
+    url: '/user/token',
     method: 'POST',
     data
   })
@@ -18,6 +18,6 @@ export const login = data => {
  */
 export const getUserInfo = () => {
   return request({
-    url: '/sys/profile'
+    url: '/user/profile'
   })
 }

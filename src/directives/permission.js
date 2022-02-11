@@ -5,13 +5,13 @@ function checkPermission(el, binding) {
   const { value } = binding
 
   // 获取当前用户的所有功能权限
-  const points = store.getters.userInfo.permission.points
+  const functionals = store.getters.userInfo.permission.functionals
 
   // value 必须是一个数组
   if (value && value instanceof Array) {
     // 匹配对应的指令
-    const hasPermission = points.some(point => {
-      return value.includes(point)
+    const hasPermission = functionals.some(functional => {
+      return value.includes(functional)
     })
     // 如果匹配失败
     if (!hasPermission) {

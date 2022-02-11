@@ -1,10 +1,20 @@
 <template>
   <div class="container">
-    <el-table :data="allRoles" border style="width: 100%">
-      <el-table-column type="index" label="序号" width="120"></el-table-column>
-      <el-table-column label="名称" prop="title"></el-table-column>
-      <el-table-column label="描述" prop="describe"></el-table-column>
-      <el-table-column label="操作" width="200" #default="{ row }">
+    <el-table
+      :data="allRoles"
+      border
+      style="width: 100%"
+      :header-cell-style="{ textAlign: 'center' }"
+    >
+      <el-table-column type="index" label="序号" width="120" align="center" />
+      <el-table-column label="名称" prop="name" />
+      <el-table-column label="描述" prop="desc" />
+      <el-table-column
+        label="操作"
+        width="200"
+        #default="{ row }"
+        align="center"
+      >
         <el-button
           type="text"
           size="mini"
@@ -35,7 +45,7 @@ const getRoleList = async () => {
 getRoleList()
 
 const distributePermissionVisible = ref(false)
-const selectRoleId = ref('')
+const selectRoleId = ref(0)
 const onDistributePermissionClick = (row) => {
   distributePermissionVisible.value = true
   selectRoleId.value = row.id

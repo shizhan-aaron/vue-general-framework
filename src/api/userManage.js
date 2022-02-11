@@ -5,7 +5,7 @@ import request from '@/utils/request'
  */
 export const userManageList = data => {
   return request({
-    url: '/user-manage/list',
+    url: '/user/list',
     params: data
   })
 }
@@ -15,7 +15,7 @@ export const userManageList = data => {
  */
 export const userDetail = id => {
   return request({
-    url: `/user-manage/detail/${id}`
+    url: `/user/detail/${id}`
   })
 }
 
@@ -24,7 +24,7 @@ export const userDetail = id => {
  */
 export const userRole = uid => {
   return request({
-    url: `/user-manage/role/${uid}`
+    url: `/user/${uid}/role`
   })
 }
 
@@ -33,10 +33,8 @@ export const userRole = uid => {
  */
 export const updateRole = (uid, roles) => {
   return request({
-    url: `/user-manage/update-role/${uid}`,
-    method: 'POST',
-    data: {
-      roles
-    }
+    url: `/user/${uid}/role`,
+    method: 'PUT',
+    data: roles
   })
 }

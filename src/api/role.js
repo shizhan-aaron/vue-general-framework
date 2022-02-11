@@ -14,7 +14,7 @@ export const roleList = () => {
   */
 export const rolePermission = (roleId) => {
   return request({
-    url: `/role/permission/${roleId}`
+    url: `/role/${roleId}/permission`
   })
 }
 
@@ -23,8 +23,8 @@ export const rolePermission = (roleId) => {
   */
 export const distributePermission = (data) => {
   return request({
-    url: '/role/distribute-permission',
-    method: 'POST',
-    data
+    url: `/role/${data.roleId}/permission`,
+    method: 'PUT',
+    data: { permissions: `${data.permissions}` }
   })
 }

@@ -14,7 +14,7 @@ export default {
       path: '/user/manage',
       component: () => import('@/views/user-manage/index'),
       meta: {
-        title: '员工管理',
+        title: '用户管理',
         icon: 'personnel-manage'
       }
     },
@@ -23,7 +23,7 @@ export default {
       name: 'userInfo',
       beforeEnter: (to, from, next) => {
         if (to.params.id) {
-          to.meta.title = to.params.id + ' 员工信息'
+          to.meta.title = to.params.id + ' 用户信息'
         }
         next()
       },

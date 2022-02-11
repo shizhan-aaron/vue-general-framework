@@ -1,12 +1,25 @@
 <template>
   <el-dialog title="配置角色" :model-value="modelValue" @close="closed">
-    <el-checkbox-group v-model="userRoleTitleList">
+    <!-- <el-checkbox-group v-model="userRoleTitleList">
       <el-checkbox
         v-for="item in allRoleList"
         :key="item.id"
         :label="item.title"
       ></el-checkbox>
-    </el-checkbox-group>
+    </el-checkbox-group> -->
+    <el-form label-width="120px">
+      <el-form-item label="请分配角色">
+        <el-select v-model="userRoleTitleList">
+          <el-option
+            v-for="item in allRoleList"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id"
+          >
+          </el-option>
+        </el-select>
+      </el-form-item>
+    </el-form>
 
     <template #footer>
       <span class="dialog-footer">
@@ -29,7 +42,7 @@ const props = defineProps({
     required: true
   },
   userId: {
-    type: String,
+    type: Number,
     required: true
   }
 })
@@ -39,10 +52,7 @@ const emits = defineEmits(['update:modelValue', 'updateRole'])
  * 确定按钮点击事件
  */
 const onConfirm = async () => {
-  const roles = userRoleTitleList.value.map((title) => {
-    return allRoleList.value.find((role) => role.title === title)
-  })
-  await updateRole(props.userId, roles)
+  await updateRole(props.userId, { id: userRoleTitleList.value })
   ElMessage.success('用户角色更新成功')
 
   // 通知父组件更新成功
@@ -69,10 +79,10 @@ getListData()
 /**
  * 获取当前用户角色
  */
-const userRoleTitleList = ref([])
+const userRoleTitleList = ref(0)
 const getUserRoles = async () => {
   const res = await userRole(props.userId)
-  userRoleTitleList.value = res.role.map((item) => item.title)
+  userRoleTitleList.value = res.id
 }
 watch(
   () => props.userId,

@@ -1,5 +1,5 @@
-import { login, getUserInfo } from '@/api/sys'
-import md5 from 'md5'
+import { login, getUserInfo } from '@/api/user'
+// import md5 from 'md5'
 import { setItem, getItem, clearItem } from '@/utils/storage'
 import { setTimeStamp } from '@/utils/auth'
 import { TOKEN } from '@/constant'
@@ -25,11 +25,11 @@ export default {
      * 登录请求动作
      */
     login (context, userInfo) {
-      const { username, password } = userInfo
+      const { account, password } = userInfo
       return new Promise((resolve, reject) => {
         login({
-          username,
-          password: md5(password)
+          account: account,
+          password: password
         }).then(data => {
           this.commit('user/setToken', data.token)
           // 跳转主页

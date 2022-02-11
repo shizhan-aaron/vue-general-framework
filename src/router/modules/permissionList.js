@@ -4,7 +4,7 @@ export default {
   path: '/user',
   component: layout,
   redirect: '/user/manage',
-  name: 'permissionList',
+  name: 'permissionManage',
   meta: {
     title: '用户',
     icon: 'personnel'

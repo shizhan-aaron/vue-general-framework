@@ -4,7 +4,6 @@
       ref="treeRef"
       :data="allPermission"
       show-checkbox
-      check-strictly
       node-key="id"
       default-expand-all
       :props="defaultProps"
@@ -31,7 +30,7 @@ const props = defineProps({
     required: true
   },
   roleId: {
-    type: String,
+    type: Number,
     required: true
   }
 })
@@ -46,7 +45,7 @@ getPermissionList()
 // 属性结构配置
 const defaultProps = {
   children: 'children',
-  label: 'permissionName'
+  label: 'name'
 }
 
 // 获取当前用户角色的权限
@@ -66,8 +65,8 @@ watch(
 const emits = defineEmits(['update:modelValue'])
 
 /**
-     确定按钮点击事件
-    */
+ * 确定按钮点击事件
+ */
 const onConfirm = async () => {
   await distributePermission({
     roleId: props.roleId,

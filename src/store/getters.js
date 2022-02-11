@@ -3,7 +3,6 @@ import { getItem } from '@/utils/storage'
 import { generateColors } from '@/utils/theme'
 
 // 快捷访问
-
 const getters = {
   token: state => state.user.token,
   /**
