@@ -3,7 +3,7 @@
     <el-table
       :data="allPermission"
       style="width: 80%; margin-bottom: 20px"
-      row-key="id"
+      row-key="mark"
       border
       default-expand-all
       :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
